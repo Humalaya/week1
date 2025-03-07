@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Painting Animation & Login</title>
+    <title>Gwynevere Art Gallery</title>
     <style>
+        /*font ai ile yapıldı */
+        @font-face {
+            font-family: 'Castellar';
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js');
+        }
+        
         body {
             display: flex;
             flex-direction: column;
@@ -13,7 +19,27 @@
             height: 100vh;
             background: linear-gradient(to bottom, #d1c4b2, #a89276);
             font-family: Arial, sans-serif;
+            text-align: center;
         }
+        
+        #clock {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 15px;
+            border-radius: 10px;
+        }
+        
+        .gallery-title {
+            font-family: 'Castellar', serif;
+            font-size: 32px;
+            color: #f5f5dc; /* Beige color */
+            margin: 10px 0 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+        
         .gallery {
             display: flex;
             align-items: center;
@@ -22,8 +48,8 @@
             padding: 50px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
+            margin-bottom: 20px;
         }
-        /* tablo */
         .painting {
             width: 150px;
             height: 200px;
@@ -33,7 +59,8 @@
             align-items: center;
             justify-content: center;
         }
-        /* Person in Painting */
+        
+        /* portre */
         .portrait {
             width: 120px;
             height: 180px;
@@ -43,6 +70,7 @@
             justify-content: center;
             flex-direction: column;
         }
+        
         .head {
             width: 40px;
             height: 40px;
@@ -50,6 +78,7 @@
             border-radius: 50%;
             position: relative;
         }
+        
         .eye {
             width: 8px;
             height: 8px;
@@ -58,8 +87,10 @@
             position: absolute;
             top: 12px;
         }
+        
         .eye.left { left: 10px; }
         .eye.right { right: 10px; }
+        
         .top-hat {
             width: 40px;
             height: 30px;
@@ -67,6 +98,7 @@
             position: absolute;
             top: -30px;
         }
+        
         .top-hat::after {
             content: "";
             width: 60px;
@@ -76,7 +108,8 @@
             bottom: -5px;
             left: -10px;
         }
-        /* bıyık ai ile yapıldı*/
+        
+        /* bıyık ai ile yapıldı */
         .mustache::before{
             content:"";
             position:absolute;
@@ -89,6 +122,7 @@
             transform:rotate(-40deg);
             transform-origin:right 21px;
         }
+        
         .mustache::after{
             content:"";
             position:absolute;
@@ -101,19 +135,21 @@
             transform:rotate(40deg);
             transform-origin:left 21px;
         }
+        
         .body {
             width: 60px;
             height: 80px;
             background: orange;
             border-radius: 10px;
         }
-        /* adam */
+
         .viewer {
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
         }
+        
         .viewer-head {
             width: 40px;
             height: 40px;
@@ -121,6 +157,7 @@
             border-radius: 50%;
             position: relative;
         }
+        
         .viewer-mouth {
             width: 20px;
             height: 5px;
@@ -128,8 +165,9 @@
             border-radius: 50%;
             position: absolute;
             bottom: 5px;
-            left: 4px;
+            left: 6px;
         }
+        
         .viewer-eye {
             width: 8px;
             height: 8px;
@@ -137,8 +175,9 @@
             border-radius: 50%;
             position: absolute;
             top: 12px;
-            left: 6px;
+            left: 8px;
         }
+        
         .arm {
             width: 10px;
             height: 30px;
@@ -150,6 +189,7 @@
             border: 2px solid black;
             transform: rotate(45deg);
         }
+        
         .arm2 {
             width: 10px;
             height: 30px;
@@ -161,6 +201,7 @@
             border: 2px solid black;
             transform: rotate(-45deg);
         }
+        
         .hand {
             width: 20px;
             height: 20px;
@@ -171,39 +212,46 @@
             border-radius: 50%;
             animation: hand-move 2s infinite alternate;
         }
+        
         @keyframes hand-move {
             0% { transform: translateX(0); }
             100% { transform: translateX(10px); }
         }
+        
         .viewer-body {
             width: 50px;
             height: 100px;
             background: red;
             border-radius: 10px;
         }
-        /* Animations */
+
         @keyframes blink {
             0%, 100% { height: 8px; }
             50% { height: 2px; }
         }
+        
         .eye { animation: blink 3s infinite; }
-        /* Login Screen */
-        .login-container {
+        
+        .login {
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             text-align: center;
             margin-top: 20px;
+            width: 300px;
         }
-        .login-container input {
+        
+        .login input {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
+            box-sizing: border-box;
         }
-        .login-container button {
+        
+        .login button {
             background: #3498db;
             color: white;
             border: none;
@@ -212,12 +260,17 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        .login-container button:hover {
+        
+        .login button:hover {
             background: #2980b9;
         }
     </style>
 </head>
 <body>
+    <div id="clock"></div>
+    
+    <h1 class="gallery-title">GWYNEVERE ART GALLERY</h1>
+    
     <div class="gallery">
         <div class="painting">
             <div class="portrait">
@@ -241,11 +294,54 @@
             <div class="viewer-body"></div>
         </div>
     </div>
-    <div class="login-container">
+    
+    <div class="login" id="loginForm">
         <h2>Login</h2>
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <button>Login</button>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit" id="loginButton">Login</button>
     </div>
+    
+    <script>
+        const loginAttempts = [];
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginForm = document.getElementById("loginForm");
+            const loginButton = document.getElementById("loginButton");
+            const usernameInput = document.getElementById("username");
+            const passwordInput = document.getElementById("password");
+            const clockElement = document.getElementById("clock");
+            
+            function updateClock() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString();
+                clockElement.textContent = timeString;
+            }
+            setInterval(updateClock, 1000);
+            updateClock();
+            
+            loginButton.addEventListener("click", function (event) {
+                event.preventDefault();
+                const loginData = {
+                    username: usernameInput.value,
+                    password: passwordInput.value,
+                    timestamp: new Date().toLocaleString()
+                };
+                loginAttempts.push(loginData);
+                console.log("Login Attempts:", loginAttempts);
+                
+                usernameInput.value = "";
+                passwordInput.value = "";
+                
+                alert("Login attempt recorded!");
+            });
+            
+            document.addEventListener("keydown", function (event) {
+                if (event.key.toLowerCase() === "h" && !inputFocused) {
+                    loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
